@@ -6,7 +6,7 @@ package main
 
 
 //Movie represents a movie or Tv show
-;
+
 type Movie struct {
 	ID                 int             `json:"id"`
 	Title              string          `json:"title"`
@@ -20,7 +20,7 @@ type Movie struct {
 
 //for anime
 
-type Anime struct (
+type Anime struct {
 	ID                 int             `json:"id"`
 	Title              string          `json:"title"`
 	Description        string          `json:"description"`

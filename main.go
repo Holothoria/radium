@@ -16,20 +16,20 @@ func main () {
 	
 	//static files
 	
-	http.Handler("/static",
+	http.Handle("/static",
 	 http.StripPrefix("/static/",
 	  http.FileServer(http.Dir("static"))))
 	  
 	  //API routes
 	  
-	  http.Handler("/api/search", handleSearch)
-	  http.Handler("/api/movie/", handleMovie)
-	  http.Handler("api/tv/"    , handleTv)
-	  http.Handler ("/api/anime/", handleAnime)
+	  http.HandleFunc("/api/search", handleSearch)
+	  http.HandleFunc("/api/movie/", handleMovie)
+	  http.HandleFunc("api/tv/"    , handleTV)
+	  http.HandleFunc ("/api/anime/", handleAnime)
 	  
 	  //Frontend
 	  
-	  http.Handler("/", handleIndex)
+	  http.HandleFunc("/", handleIndex)
 	  
 	  //Port from env or default
 	  
@@ -38,7 +38,7 @@ func main () {
 		  port = "5000"
 	  }
 	  
-	  log.printf("Radium running on :%s", port )
+	  log.Printf("Radium running on :%s", port )
 	  if err := http.ListenAndServe(":" + port, nil); err != nil {
 		  log.Fatalf("Server failed to start: %v", err)
 	  }
