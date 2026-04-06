@@ -1,6 +1,7 @@
 package main
 
 import (
+        "github.com/joho/godotenv"
         "log"
         "net/http"
         "os"
@@ -9,6 +10,15 @@ import (
 )
 
 func main () {
+	// loading .env file
+	if err := godotenv.Load(); err != nil {
+		log.Printf("No .env file found")
+	}
+	
+	tmdbKey := os.Getenv("TMDB_API_KEY")
+	if tmdbKey == ""{
+		log.Fatalf("TMDB_API_KEY not found or set")
+	}
 	//initialized the database
 	if err := initDB(); err != nil {
 		log.Fatalf("Failed to init DB: %v", err)
