@@ -94,7 +94,11 @@ func sendError(w http.ResponseWriter, message string, status int) {
 
 //Get
 func handleIndex(w http.ResponseWriter, r*http.Request) {
-	http.ServeFile(w, r, "static/index.html")
+  if r.URL.Path != "/" {
+	  http.NotFound(w, r)
+	  return 
+  }
+  http.ServeFile(w, r, "static/index.html")
 }
 
 //Get f(for searching)

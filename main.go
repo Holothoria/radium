@@ -26,7 +26,7 @@ func main () {
 	
 	//static files
 	
-	http.Handle("/static",
+	http.Handle("/static/",
 	 http.StripPrefix("/static/",
 	  http.FileServer(http.Dir("static"))))
 	  
@@ -34,7 +34,7 @@ func main () {
 	  
 	  http.HandleFunc("/api/search", handleSearch)
 	  http.HandleFunc("/api/movie/", handleMovie)
-	  http.HandleFunc("api/tv/"    , handleTV)
+	  http.HandleFunc("/api/tv/"    , handleTV)
 	  http.HandleFunc ("/api/anime/", handleAnime)
 	  
 	  //Frontend
